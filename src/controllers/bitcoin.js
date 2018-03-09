@@ -16,10 +16,13 @@ let previousPrice = 0;
     .then(getPrevious)
     .then(previous => {
         previousPrice = Object.values(previous.bpi)[0];
+        const rPrev = round(previousPrice);
+        const rCurr = round(currentPrice);
+        const rDiff = round(rCurr - rPrev)
         res.send({
-            currentPrice,
-            previousPrice,
-            differnce: Number(currentPrice.slice(0, (num.indexOf("."))+3)) - Number(previousPrice.slice(0, (num.indexOf("."))+3)),
+            currentPrice: '$' + rCurr,
+            previousPrice: '$' + rPrev,
+            differnce: '$' + rDiff
         });
     })
     .catch(err => {
@@ -27,5 +30,10 @@ let previousPrice = 0;
       res.send({ err });
     });
 });
+
+function round(num) {
+    const number = Number(num);
+    return Math.ceil(number * 100) / 100
+}
 
 module.exports = router;
