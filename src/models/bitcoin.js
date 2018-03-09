@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const config = require('../../config.js');
 
 const URL_CURRENT = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-const URL_PREVIOUS = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2018-03-08&end=2018-03-08';
+const URL_PREVIOUS = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday';
 
 function getCurrent(term) {
   return new Promise((resolve, reject) => {
