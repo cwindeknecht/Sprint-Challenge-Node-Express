@@ -32,31 +32,19 @@ function getPrevious() {
 }
 
 function getDate(start, end) {
-  if (!end) {
-    const url = URL_DATE + 'start=' + start + '&end=' + start;
-    return new Promise((resolve, reject) => {
-      fetch(url)
-        .then(res => res.json())
-        .then(date => {
-          resolve(date);
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  } else {
-    const url = URL_DATE + 'start=' + start + '&end=' + end;
-    return new Promise((resolve, reject) => {
-      fetch(url)
-        .then(res => res.json())
-        .then(date => {
-          resolve(date);
-        })
-        .catch(err => {
-          reject(err);
-        });
-    });
-  }
+  let url = '';
+  if (!end) url = URL_DATE + 'start=' + start + '&end=' + start;
+  else url = URL_DATE + 'start=' + start + '&end=' + end;
+  return new Promise((resolve, reject) => {
+    fetch(url)
+      .then(res => res.json())
+      .then(date => {
+        resolve(date);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
 }
 
 module.exports = { getCurrent, getPrevious, getDate };
