@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const config = require('../../config.js');
+const config = require('../config.js');
 
 const URL_CURRENT = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 const URL_PREVIOUS = 'https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday';

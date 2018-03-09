@@ -1,6 +1,6 @@
 const express = require('express');
 
-const config = require('./config.js');
+const config = require('./config');
 const bitcoinController = require('./controllers/bitcoin.js');
 
 const app = express();
